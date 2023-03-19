@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './style.css'
+class App extends Component {
+    constructor(props){
+        super(props)
+        this.state={curTime:""}
+    }
+    componentDidMount() {
+        setInterval(() => {
+            var today = new Date(),
+            curTime =today.getHours() +":" +today.getMinutes() +":" +today.getSeconds();
+            this.setState({ curTime });
+        }, 1000);
+      }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    componentDidUpdate(){
+        if(this.state.curTime==='9:52:55'){
+            
+            alert('take a break');
+        }
+    }
+    render() {
+        return(
+        <>
+        <>
+        <center className='card'>
+        <h1 className='timer'>{this.state.curTime}PM</h1>
+        </center>
+        </>
+        
+        </>
+        )
+        
+    }
+    
+        
+  }
+    
 
-export default App;
+
+export default App
